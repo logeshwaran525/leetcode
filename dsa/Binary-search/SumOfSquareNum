@@ -1,0 +1,32 @@
+class Solution {
+    // public boolean sqrt(int c)
+    // {
+    //     int l = 0;
+    //     int r = c;
+    //     while(l<=r)
+    //     {
+    //         int mid = l+(r-l)/2;
+    //         if(mid*mid==c) return true;
+    //         if(mid*mid<c)
+    //         {
+    //             l = mid + 1;
+    //         }
+    //         else
+    //         {
+    //             r = mid - 1;
+    //         }
+    //          //System.out.println(l+" "+r);
+    //     }
+    //     //System.out.println(r);
+    //     return false;
+    // }
+    public boolean judgeSquareSum(int c) {
+        for (long a = 0; a * a <= c; a++) {   // Iterate through all possible values of `a`
+            double b = Math.sqrt(c - a * a);  // Compute `b` as the square root of `c - a^2`
+            if (b == (int)b) {                 // Check if `b` is an integer
+                return true;                   // If `b` is an integer, return true
+            }
+        }
+        return false;                          // If no such pair `(a, b)` is found, return false
+    }
+}
