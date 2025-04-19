@@ -1,0 +1,16 @@
+class Solution {
+    public boolean searchMatrix(int[][] mat, int t) {
+        int n = mat.length;
+        int m = mat[0].length;
+        int l=0,h=n*m-1;
+        while(l<=h)
+        {
+            int mid = (l+h)/2;
+            int r=mid/m,c=mid%m;
+            if(mat[r][c]==t) return true;
+            else if(mat[r][c]<t) l = mid + 1;
+            else h = mid - 1; 
+        }
+        return false;
+    }
+}
