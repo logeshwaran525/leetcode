@@ -1,0 +1,46 @@
+class Solution {
+     static {
+        for(int i = 0; i < 500; i++) {
+            longestSubarray(new int[] { 0 });
+        }
+    }
+
+    public static int longestSubarray(int[] nums) {
+      int n = nums.length;
+      int l=0,r=0,c=0,z=0,m = Integer.MIN_VALUE;
+      for(int i=0 ; i<n ; i++)
+      {
+        if(nums[i]==1)
+        {
+            r = i;
+            break;
+        }
+      }
+      while(r<n)
+      {
+        if(nums[r]==1)
+        {
+            c++;
+            r++;
+            m = Math.max(c,m);
+            continue;
+        }
+        if(nums[r]==0 && z==0)
+        {
+            r++;
+            z = r;
+            continue;
+        }
+        else
+        {
+            r = z;
+            z = 0;
+            c = 0;
+            m = Math.max(c,m);
+        }
+      }
+      m = Math.max(c,m);
+      if(m == n) return n-1;
+      return m;
+    }
+}
