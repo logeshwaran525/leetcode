@@ -1,0 +1,19 @@
+class Solution {
+    public void sol(int ind,int[] arr,List<List<Integer>> ans,List<Integer> ds)
+    {
+        if(ind == arr.length)
+        {
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+        ds.add(arr[ind]);
+        sol(ind+1,arr,ans,ds);
+        ds.remove(ds.size()-1);
+        sol(ind+1,arr,ans,ds);
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        sol(0,nums,ans,new ArrayList<>());
+        return ans;
+    }
+}
